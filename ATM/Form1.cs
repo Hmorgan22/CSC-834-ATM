@@ -56,5 +56,15 @@ namespace ATM
         {
 
         }
+
+        private void withdrawalAccountSelectionPanel_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void checkBalanceAccountNumberTextBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
