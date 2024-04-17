@@ -43,6 +43,10 @@ namespace ATM
             this.errorReturnBtn = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.transferAmountPanel = new System.Windows.Forms.Panel();
+            this.transferAccountBalanceText = new System.Windows.Forms.TextBox();
+            this.transferAccountNumberText = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
             this.transferEnterBtn = new System.Windows.Forms.Button();
             this.transferEraseBtn = new System.Windows.Forms.Button();
             this.transfer0Btn = new System.Windows.Forms.Button();
@@ -110,12 +114,8 @@ namespace ATM
             this.transferToAccountListBox = new System.Windows.Forms.ListBox();
             this.label17 = new System.Windows.Forms.Label();
             this.atmCashAmountErrorPanel = new System.Windows.Forms.Panel();
-            this.label18 = new System.Windows.Forms.Label();
             this.atmCashAmountReturnBtn = new System.Windows.Forms.Button();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.transferAccountNumberText = new System.Windows.Forms.TextBox();
-            this.transferAccountBalanceText = new System.Windows.Forms.TextBox();
+            this.label18 = new System.Windows.Forms.Label();
             this.loginPanel = new System.Windows.Forms.Panel();
             this.loginEnterBtn = new System.Windows.Forms.Button();
             this.loginEraseBtn = new System.Windows.Forms.Button();
@@ -133,8 +133,8 @@ namespace ATM
             this.label12 = new System.Windows.Forms.Label();
             this.loginTextBox = new System.Windows.Forms.TextBox();
             this.loginPinEorrorPanel = new System.Windows.Forms.Panel();
-            this.label13 = new System.Windows.Forms.Label();
             this.loginPinErrorMessageBtn = new System.Windows.Forms.Button();
+            this.label13 = new System.Windows.Forms.Label();
             this.mainMenuPanel.SuspendLayout();
             this.withdrawalAccountSelectionPanel.SuspendLayout();
             this.limitErrorPanel.SuspendLayout();
@@ -306,6 +306,39 @@ namespace ATM
             this.transferAmountPanel.Name = "transferAmountPanel";
             this.transferAmountPanel.Size = new System.Drawing.Size(291, 321);
             this.transferAmountPanel.TabIndex = 7;
+            // 
+            // transferAccountBalanceText
+            // 
+            this.transferAccountBalanceText.Location = new System.Drawing.Point(141, 44);
+            this.transferAccountBalanceText.Name = "transferAccountBalanceText";
+            this.transferAccountBalanceText.Size = new System.Drawing.Size(100, 20);
+            this.transferAccountBalanceText.TabIndex = 25;
+            // 
+            // transferAccountNumberText
+            // 
+            this.transferAccountNumberText.Location = new System.Drawing.Point(141, 12);
+            this.transferAccountNumberText.Name = "transferAccountNumberText";
+            this.transferAccountNumberText.Size = new System.Drawing.Size(100, 20);
+            this.transferAccountNumberText.TabIndex = 24;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(23, 47);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(92, 13);
+            this.label6.TabIndex = 23;
+            this.label6.Text = "Account Balance:";
+            this.label6.Click += new System.EventHandler(this.label6_Click);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(26, 15);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(93, 13);
+            this.label5.TabIndex = 22;
+            this.label5.Text = "Account Number: ";
             // 
             // transferEnterBtn
             // 
@@ -949,16 +982,6 @@ namespace ATM
             this.atmCashAmountErrorPanel.Size = new System.Drawing.Size(247, 125);
             this.atmCashAmountErrorPanel.TabIndex = 16;
             // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(28, 21);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(194, 39);
-            this.label18.TabIndex = 0;
-            this.label18.Text = "The ATM does not have enough funds \r\nfor this transaction. Please return at \r\na l" +
-    "ater time.\r\n";
-            // 
             // atmCashAmountReturnBtn
             // 
             this.atmCashAmountReturnBtn.Location = new System.Drawing.Point(90, 78);
@@ -968,38 +991,15 @@ namespace ATM
             this.atmCashAmountReturnBtn.Text = "Return";
             this.atmCashAmountReturnBtn.UseVisualStyleBackColor = true;
             // 
-            // label5
+            // label18
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(26, 15);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(93, 13);
-            this.label5.TabIndex = 22;
-            this.label5.Text = "Account Number: ";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(23, 47);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(92, 13);
-            this.label6.TabIndex = 23;
-            this.label6.Text = "Account Balance:";
-            this.label6.Click += new System.EventHandler(this.label6_Click);
-            // 
-            // transferAccountNumberText
-            // 
-            this.transferAccountNumberText.Location = new System.Drawing.Point(141, 12);
-            this.transferAccountNumberText.Name = "transferAccountNumberText";
-            this.transferAccountNumberText.Size = new System.Drawing.Size(100, 20);
-            this.transferAccountNumberText.TabIndex = 24;
-            // 
-            // transferAccountBalanceText
-            // 
-            this.transferAccountBalanceText.Location = new System.Drawing.Point(141, 44);
-            this.transferAccountBalanceText.Name = "transferAccountBalanceText";
-            this.transferAccountBalanceText.Size = new System.Drawing.Size(100, 20);
-            this.transferAccountBalanceText.TabIndex = 25;
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(28, 21);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(194, 39);
+            this.label18.TabIndex = 0;
+            this.label18.Text = "The ATM does not have enough funds \r\nfor this transaction. Please return at \r\na l" +
+    "ater time.\r\n";
             // 
             // loginPanel
             // 
@@ -1022,6 +1022,7 @@ namespace ATM
             this.loginPanel.Name = "loginPanel";
             this.loginPanel.Size = new System.Drawing.Size(312, 244);
             this.loginPanel.TabIndex = 17;
+            this.loginPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.loginPanel_Paint);
             // 
             // loginEnterBtn
             // 
@@ -1031,6 +1032,7 @@ namespace ATM
             this.loginEnterBtn.TabIndex = 55;
             this.loginEnterBtn.Text = "Enter";
             this.loginEnterBtn.UseVisualStyleBackColor = true;
+            this.loginEnterBtn.Click += new System.EventHandler(this.loginEnterBtn_Click);
             // 
             // loginEraseBtn
             // 
@@ -1165,15 +1167,6 @@ namespace ATM
             this.loginPinEorrorPanel.Size = new System.Drawing.Size(256, 131);
             this.loginPinEorrorPanel.TabIndex = 18;
             // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(90, 30);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(85, 13);
-            this.label13.TabIndex = 0;
-            this.label13.Text = "Invalid PIN entry";
-            // 
             // loginPinErrorMessageBtn
             // 
             this.loginPinErrorMessageBtn.Location = new System.Drawing.Point(93, 61);
@@ -1182,6 +1175,16 @@ namespace ATM
             this.loginPinErrorMessageBtn.TabIndex = 1;
             this.loginPinErrorMessageBtn.Text = "Return";
             this.loginPinErrorMessageBtn.UseVisualStyleBackColor = true;
+            this.loginPinErrorMessageBtn.Click += new System.EventHandler(this.loginPinErrorMessageBtn_Click);
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(90, 30);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(85, 13);
+            this.label13.TabIndex = 0;
+            this.label13.Text = "Invalid PIN entry";
             // 
             // Form1
             // 

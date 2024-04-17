@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ATM
 {
-    class Customer
+    public class Customer
     {
         public int customerId { get; set; }
         public string firstName { get; set; }
@@ -14,12 +15,12 @@ namespace ATM
         public int pin { get; set; }
         public int accountNum { get; set; }
 
+       
+
         //constructor
-        public Customer(int customerId, string firstName, string lastName)
+        public Customer(int customerId)
         {
             this.customerId = customerId;
-            this.firstName = firstName;
-            this.lastName = lastName;
         }
 
         //method to get a list of the users accounts
@@ -59,9 +60,34 @@ namespace ATM
         }
 
         //method to verify the users pin
-        public void verifyPin()
+        public int verifyPin(string customerPin)
         {
+            //set up connection to DB
+            MySqlConnection conn = new MySqlConnection("server=csitmariadb.eku.edu;user=student;database=csc340_db;port=3306;password=Maroon@21?;");
+            int tempId = 0;
 
+            //opens connections and reads all customers from teh DB
+            conn.Open();
+            string sql = "SELECT * FROM morgan_h_customer";
+            MySqlCommand cmd = new MySqlCommand(sql, conn);
+            MySqlDataReader myReader = cmd.ExecuteReader();
+            //checks DB for a customer with the pin that was entered
+            while (myReader.Read())
+            {
+                //if a match is found, update the customer Id
+                if (myReader["pin"].ToString().Equals(customerPin))
+                {
+                    tempId = Int32.Parse(myReader["customerId"].ToString());
+                }
+            }
+            myReader.Close();
+            conn.Close();
+
+            //int tempId = 0;
+            //if (customerPin == "1111")
+            //    tempId = 1111;
+
+            return tempId;
         }
     }
         
