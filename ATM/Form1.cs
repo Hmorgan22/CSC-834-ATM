@@ -129,5 +129,81 @@ namespace ATM
             loginPinEorrorPanel.Visible = false;
             loginPanel.Visible = true;
         }
+        //-----------------------------------------------------------------This section is for Login screen buttons-------------------------------------
+        private void login1Btn_Click(object sender, EventArgs e)
+        {
+            customerPin += "1";
+            loginTextBox.Text = customerPin;
+        }
+
+        private void login2Btn_Click(object sender, EventArgs e)
+        {
+            customerPin += "2";
+            loginTextBox.Text = customerPin;
+        }
+
+        private void login3Btn_Click(object sender, EventArgs e)
+        {
+            customerPin += "3";
+            loginTextBox.Text = customerPin;
+        }
+
+        private void login4Btn_Click(object sender, EventArgs e)
+        {
+            customerPin += "4";
+            loginTextBox.Text = customerPin;
+        }
+
+        private void login5Btn_Click(object sender, EventArgs e)
+        {
+            customerPin += "5";
+            loginTextBox.Text = customerPin;
+        }
+
+        private void login6Btn_Click(object sender, EventArgs e)
+        {
+            customerPin += "6";
+            loginTextBox.Text = customerPin;
+        }
+
+        private void login7Btn_Click(object sender, EventArgs e)
+        {
+            customerPin += "7";
+            loginTextBox.Text = customerPin;
+        }
+
+        private void login8Btn_Click(object sender, EventArgs e)
+        {
+            customerPin += "8";
+            loginTextBox.Text = customerPin;
+        }
+
+        private void login9Btn_Click(object sender, EventArgs e)
+        {
+            customerPin += "9";
+            loginTextBox.Text = customerPin;
+        }
+
+        private void login0Btn_Click(object sender, EventArgs e)
+        {
+            customerPin += "0";
+            loginTextBox.Text = customerPin;
+        }
+
+        private void loginClrBtn_Click(object sender, EventArgs e)
+        {
+            customerPin = "";
+            loginTextBox.Text = customerPin;
+        }
+
+        private void loginEraseBtn_Click(object sender, EventArgs e)
+        {
+            if (customerPin.Length >= 1) {
+                customerPin = customerPin.Remove(customerPin.Length - 1);
+                loginTextBox.Text = customerPin;
+            }
+           
+        }
+        //---------------------------------------------------------------------Login screen buttons end-------------------------------------------------
     }
 }

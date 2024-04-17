@@ -1018,7 +1018,7 @@ namespace ATM
             this.loginPanel.Controls.Add(this.login1Btn);
             this.loginPanel.Controls.Add(this.label12);
             this.loginPanel.Controls.Add(this.loginTextBox);
-            this.loginPanel.Location = new System.Drawing.Point(889, 158);
+            this.loginPanel.Location = new System.Drawing.Point(12, 12);
             this.loginPanel.Name = "loginPanel";
             this.loginPanel.Size = new System.Drawing.Size(312, 244);
             this.loginPanel.TabIndex = 17;
@@ -1042,6 +1042,7 @@ namespace ATM
             this.loginEraseBtn.TabIndex = 54;
             this.loginEraseBtn.Text = "<-";
             this.loginEraseBtn.UseVisualStyleBackColor = true;
+            this.loginEraseBtn.Click += new System.EventHandler(this.loginEraseBtn_Click);
             // 
             // login0Btn
             // 
@@ -1051,6 +1052,7 @@ namespace ATM
             this.login0Btn.TabIndex = 53;
             this.login0Btn.Text = "0";
             this.login0Btn.UseVisualStyleBackColor = true;
+            this.login0Btn.Click += new System.EventHandler(this.login0Btn_Click);
             // 
             // loginClrBtn
             // 
@@ -1060,6 +1062,7 @@ namespace ATM
             this.loginClrBtn.TabIndex = 52;
             this.loginClrBtn.Text = "Clear";
             this.loginClrBtn.UseVisualStyleBackColor = true;
+            this.loginClrBtn.Click += new System.EventHandler(this.loginClrBtn_Click);
             // 
             // login9Btn
             // 
@@ -1069,6 +1072,7 @@ namespace ATM
             this.login9Btn.TabIndex = 51;
             this.login9Btn.Text = "9";
             this.login9Btn.UseVisualStyleBackColor = true;
+            this.login9Btn.Click += new System.EventHandler(this.login9Btn_Click);
             // 
             // login8Btn
             // 
@@ -1078,6 +1082,7 @@ namespace ATM
             this.login8Btn.TabIndex = 50;
             this.login8Btn.Text = "8";
             this.login8Btn.UseVisualStyleBackColor = true;
+            this.login8Btn.Click += new System.EventHandler(this.login8Btn_Click);
             // 
             // login7Btn
             // 
@@ -1087,6 +1092,7 @@ namespace ATM
             this.login7Btn.TabIndex = 49;
             this.login7Btn.Text = "7";
             this.login7Btn.UseVisualStyleBackColor = true;
+            this.login7Btn.Click += new System.EventHandler(this.login7Btn_Click);
             // 
             // login6Btn
             // 
@@ -1096,6 +1102,7 @@ namespace ATM
             this.login6Btn.TabIndex = 48;
             this.login6Btn.Text = "6";
             this.login6Btn.UseVisualStyleBackColor = true;
+            this.login6Btn.Click += new System.EventHandler(this.login6Btn_Click);
             // 
             // login5Btn
             // 
@@ -1105,6 +1112,7 @@ namespace ATM
             this.login5Btn.TabIndex = 47;
             this.login5Btn.Text = "5";
             this.login5Btn.UseVisualStyleBackColor = true;
+            this.login5Btn.Click += new System.EventHandler(this.login5Btn_Click);
             // 
             // login4Btn
             // 
@@ -1114,6 +1122,7 @@ namespace ATM
             this.login4Btn.TabIndex = 46;
             this.login4Btn.Text = "4";
             this.login4Btn.UseVisualStyleBackColor = true;
+            this.login4Btn.Click += new System.EventHandler(this.login4Btn_Click);
             // 
             // login3Btn
             // 
@@ -1123,6 +1132,7 @@ namespace ATM
             this.login3Btn.TabIndex = 45;
             this.login3Btn.Text = "3";
             this.login3Btn.UseVisualStyleBackColor = true;
+            this.login3Btn.Click += new System.EventHandler(this.login3Btn_Click);
             // 
             // login2Btn
             // 
@@ -1132,6 +1142,7 @@ namespace ATM
             this.login2Btn.TabIndex = 44;
             this.login2Btn.Text = "2";
             this.login2Btn.UseVisualStyleBackColor = true;
+            this.login2Btn.Click += new System.EventHandler(this.login2Btn_Click);
             // 
             // login1Btn
             // 
@@ -1141,6 +1152,7 @@ namespace ATM
             this.login1Btn.TabIndex = 43;
             this.login1Btn.Text = "1";
             this.login1Btn.UseVisualStyleBackColor = true;
+            this.login1Btn.Click += new System.EventHandler(this.login1Btn_Click);
             // 
             // label12
             // 
@@ -1155,6 +1167,7 @@ namespace ATM
             // 
             this.loginTextBox.Location = new System.Drawing.Point(94, 29);
             this.loginTextBox.Name = "loginTextBox";
+            this.loginTextBox.ReadOnly = true;
             this.loginTextBox.Size = new System.Drawing.Size(143, 20);
             this.loginTextBox.TabIndex = 41;
             // 
@@ -1162,7 +1175,7 @@ namespace ATM
             // 
             this.loginPinEorrorPanel.Controls.Add(this.loginPinErrorMessageBtn);
             this.loginPinEorrorPanel.Controls.Add(this.label13);
-            this.loginPinEorrorPanel.Location = new System.Drawing.Point(898, 425);
+            this.loginPinEorrorPanel.Location = new System.Drawing.Point(12, 262);
             this.loginPinEorrorPanel.Name = "loginPinEorrorPanel";
             this.loginPinEorrorPanel.Size = new System.Drawing.Size(256, 131);
             this.loginPinEorrorPanel.TabIndex = 18;

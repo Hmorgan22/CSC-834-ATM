@@ -66,9 +66,9 @@ namespace ATM
             MySqlConnection conn = new MySqlConnection("server=csitmariadb.eku.edu;user=student;database=csc340_db;port=3306;password=Maroon@21?;");
             int tempId = 0;
 
-            //opens connections and reads all customers from teh DB
+            //opens connections and reads all customers from the DB
             conn.Open();
-            string sql = "SELECT * FROM morgan_h_customer";
+            string sql = "SELECT * FROM 834_morgan_customer";
             MySqlCommand cmd = new MySqlCommand(sql, conn);
             MySqlDataReader myReader = cmd.ExecuteReader();
             //checks DB for a customer with the pin that was entered
@@ -82,10 +82,6 @@ namespace ATM
             }
             myReader.Close();
             conn.Close();
-
-            //int tempId = 0;
-            //if (customerPin == "1111")
-            //    tempId = 1111;
 
             return tempId;
         }
