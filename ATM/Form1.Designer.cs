@@ -217,7 +217,7 @@ namespace ATM
             this.withdrawalAccountSelectionPanel.Controls.Add(this.withdrawalAccountSelectReturnBtn);
             this.withdrawalAccountSelectionPanel.Controls.Add(this.withdrawalAccountList);
             this.withdrawalAccountSelectionPanel.Controls.Add(this.label1);
-            this.withdrawalAccountSelectionPanel.Location = new System.Drawing.Point(521, 666);
+            this.withdrawalAccountSelectionPanel.Location = new System.Drawing.Point(891, 678);
             this.withdrawalAccountSelectionPanel.Name = "withdrawalAccountSelectionPanel";
             this.withdrawalAccountSelectionPanel.Size = new System.Drawing.Size(242, 307);
             this.withdrawalAccountSelectionPanel.TabIndex = 5;
@@ -311,6 +311,7 @@ namespace ATM
             // 
             this.transferAccountBalanceText.Location = new System.Drawing.Point(141, 44);
             this.transferAccountBalanceText.Name = "transferAccountBalanceText";
+            this.transferAccountBalanceText.ReadOnly = true;
             this.transferAccountBalanceText.Size = new System.Drawing.Size(100, 20);
             this.transferAccountBalanceText.TabIndex = 25;
             // 
@@ -318,6 +319,7 @@ namespace ATM
             // 
             this.transferAccountNumberText.Location = new System.Drawing.Point(141, 12);
             this.transferAccountNumberText.Name = "transferAccountNumberText";
+            this.transferAccountNumberText.ReadOnly = true;
             this.transferAccountNumberText.Size = new System.Drawing.Size(100, 20);
             this.transferAccountNumberText.TabIndex = 24;
             // 
@@ -471,6 +473,7 @@ namespace ATM
             // 
             this.transferAmountTextBox.Location = new System.Drawing.Point(79, 103);
             this.transferAmountTextBox.Name = "transferAmountTextBox";
+            this.transferAmountTextBox.ReadOnly = true;
             this.transferAmountTextBox.Size = new System.Drawing.Size(143, 20);
             this.transferAmountTextBox.TabIndex = 0;
             // 
@@ -575,7 +578,7 @@ namespace ATM
             this.depositPanel.Controls.Add(this.depositAccountReturnBtn);
             this.depositPanel.Controls.Add(this.depositAccountList);
             this.depositPanel.Controls.Add(this.label8);
-            this.depositPanel.Location = new System.Drawing.Point(773, 669);
+            this.depositPanel.Location = new System.Drawing.Point(1139, 678);
             this.depositPanel.Name = "depositPanel";
             this.depositPanel.Size = new System.Drawing.Size(280, 304);
             this.depositPanel.TabIndex = 9;
@@ -618,7 +621,7 @@ namespace ATM
             this.checkBalancePanel.Controls.Add(this.checkBalanceAccountNumberTextBox);
             this.checkBalancePanel.Controls.Add(this.label9);
             this.checkBalancePanel.Controls.Add(this.label10);
-            this.checkBalancePanel.Location = new System.Drawing.Point(1746, 758);
+            this.checkBalancePanel.Location = new System.Drawing.Point(355, 325);
             this.checkBalancePanel.Name = "checkBalancePanel";
             this.checkBalancePanel.Size = new System.Drawing.Size(255, 121);
             this.checkBalancePanel.TabIndex = 10;
@@ -631,11 +634,13 @@ namespace ATM
             this.checkBalanceReturnBtn.TabIndex = 30;
             this.checkBalanceReturnBtn.Text = "Return";
             this.checkBalanceReturnBtn.UseVisualStyleBackColor = true;
+            this.checkBalanceReturnBtn.Click += new System.EventHandler(this.checkBalanceReturnBtn_Click);
             // 
             // checkBalanceAccountBalanceTextBox
             // 
             this.checkBalanceAccountBalanceTextBox.Location = new System.Drawing.Point(134, 48);
             this.checkBalanceAccountBalanceTextBox.Name = "checkBalanceAccountBalanceTextBox";
+            this.checkBalanceAccountBalanceTextBox.ReadOnly = true;
             this.checkBalanceAccountBalanceTextBox.Size = new System.Drawing.Size(100, 20);
             this.checkBalanceAccountBalanceTextBox.TabIndex = 29;
             this.checkBalanceAccountBalanceTextBox.Text = "$100,000.00";
@@ -644,6 +649,7 @@ namespace ATM
             // 
             this.checkBalanceAccountNumberTextBox.Location = new System.Drawing.Point(134, 16);
             this.checkBalanceAccountNumberTextBox.Name = "checkBalanceAccountNumberTextBox";
+            this.checkBalanceAccountNumberTextBox.ReadOnly = true;
             this.checkBalanceAccountNumberTextBox.Size = new System.Drawing.Size(100, 20);
             this.checkBalanceAccountNumberTextBox.TabIndex = 28;
             this.checkBalanceAccountNumberTextBox.Text = "1111";
@@ -672,7 +678,7 @@ namespace ATM
             this.checkBalanceAccountListPanel.Controls.Add(this.checkBalanceAccountReturnBtn);
             this.checkBalanceAccountListPanel.Controls.Add(this.checkBalanceAccountListBox);
             this.checkBalanceAccountListPanel.Controls.Add(this.label11);
-            this.checkBalanceAccountListPanel.Location = new System.Drawing.Point(1068, 669);
+            this.checkBalanceAccountListPanel.Location = new System.Drawing.Point(330, 12);
             this.checkBalanceAccountListPanel.Name = "checkBalanceAccountListPanel";
             this.checkBalanceAccountListPanel.Size = new System.Drawing.Size(280, 304);
             this.checkBalanceAccountListPanel.TabIndex = 11;
@@ -685,6 +691,7 @@ namespace ATM
             this.checkBalanceAccountReturnBtn.TabIndex = 5;
             this.checkBalanceAccountReturnBtn.Text = "Return";
             this.checkBalanceAccountReturnBtn.UseVisualStyleBackColor = true;
+            this.checkBalanceAccountReturnBtn.Click += new System.EventHandler(this.checkBalanceAccountReturnBtn_Click);
             // 
             // checkBalanceAccountListBox
             // 
@@ -698,6 +705,7 @@ namespace ATM
             this.checkBalanceAccountListBox.Name = "checkBalanceAccountListBox";
             this.checkBalanceAccountListBox.Size = new System.Drawing.Size(192, 199);
             this.checkBalanceAccountListBox.TabIndex = 4;
+            this.checkBalanceAccountListBox.SelectedIndexChanged += new System.EventHandler(this.checkBalanceAccountListBox_SelectedIndexChanged);
             // 
             // label11
             // 
@@ -860,6 +868,7 @@ namespace ATM
             // 
             this.depositAmountTextBox.Location = new System.Drawing.Point(89, 24);
             this.depositAmountTextBox.Name = "depositAmountTextBox";
+            this.depositAmountTextBox.ReadOnly = true;
             this.depositAmountTextBox.Size = new System.Drawing.Size(143, 20);
             this.depositAmountTextBox.TabIndex = 26;
             // 
@@ -896,7 +905,7 @@ namespace ATM
             this.transferFromAccountListPanel.Controls.Add(this.transferFromAccountListReturnBtn);
             this.transferFromAccountListPanel.Controls.Add(this.transferFromAccountListBox);
             this.transferFromAccountListPanel.Controls.Add(this.label16);
-            this.transferFromAccountListPanel.Location = new System.Drawing.Point(12, 663);
+            this.transferFromAccountListPanel.Location = new System.Drawing.Point(374, 672);
             this.transferFromAccountListPanel.Name = "transferFromAccountListPanel";
             this.transferFromAccountListPanel.Size = new System.Drawing.Size(233, 310);
             this.transferFromAccountListPanel.TabIndex = 14;
@@ -937,7 +946,7 @@ namespace ATM
             this.transferToAccountListPanel.Controls.Add(this.transferToAccountListReturnBtn);
             this.transferToAccountListPanel.Controls.Add(this.transferToAccountListBox);
             this.transferToAccountListPanel.Controls.Add(this.label17);
-            this.transferToAccountListPanel.Location = new System.Drawing.Point(251, 663);
+            this.transferToAccountListPanel.Location = new System.Drawing.Point(621, 678);
             this.transferToAccountListPanel.Name = "transferToAccountListPanel";
             this.transferToAccountListPanel.Size = new System.Drawing.Size(264, 310);
             this.transferToAccountListPanel.TabIndex = 15;
@@ -977,7 +986,7 @@ namespace ATM
             // 
             this.atmCashAmountErrorPanel.Controls.Add(this.atmCashAmountReturnBtn);
             this.atmCashAmountErrorPanel.Controls.Add(this.label18);
-            this.atmCashAmountErrorPanel.Location = new System.Drawing.Point(954, 12);
+            this.atmCashAmountErrorPanel.Location = new System.Drawing.Point(1750, 754);
             this.atmCashAmountErrorPanel.Name = "atmCashAmountErrorPanel";
             this.atmCashAmountErrorPanel.Size = new System.Drawing.Size(247, 125);
             this.atmCashAmountErrorPanel.TabIndex = 16;

@@ -9,7 +9,7 @@ namespace ATM
 {
     public class Account
     {
-        public DateTime dailyTransactionDate { get; set; } 
+        public string dailyTransactionDate { get; set; } 
         public double dailyTransactionTotal { get; set; }
         public double dailyTransactionLimit { get; set; }
         public double balance { get; set; }
@@ -18,10 +18,14 @@ namespace ATM
         public int customerId { get; set; }
 
         //constructor
-        public Account(int accountNum, int customerId)
+        public Account(int accountNum, double dailyDepositAmount,  double balance, double dailyTransactionLimit, double dailyTransactionTotal, string dailyTransactionDate)
         {
             this.accountNum = accountNum;
-            this.customerId = customerId;
+            this.dailyDepositAmount = dailyDepositAmount;
+            this.balance = balance;
+            this.dailyTransactionLimit = dailyTransactionLimit;
+            this.dailyTransactionTotal = dailyTransactionTotal;
+            this.dailyTransactionDate = dailyTransactionDate;
         }
 
         //method to get the balance

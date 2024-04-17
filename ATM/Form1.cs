@@ -14,7 +14,7 @@ namespace ATM
     public partial class Form1 : Form
     {
         //declare variables
-        public List<Account> accountList = new List<Account>();
+        List<Account> accountList = new List<Account>();
         Customer customer = new Customer(0);
         string transactionAmount = "";
         string customerPin = "";
@@ -55,8 +55,26 @@ namespace ATM
 
         }
 
+        //method to check the balance of the account
         private void button3_Click(object sender, EventArgs e)
         {
+            //change the screens
+            mainMenuPanel.Visible = false;
+            checkBalanceAccountListPanel.Visible = true;
+            accountList.Clear();
+
+            //gets a list of accounts for this customer
+            accountList = customer.getAccounts(customer.customerId);
+
+            //displays accounts on screen
+            checkBalanceAccountListBox.Items.Clear();
+            foreach(Account acc in accountList)
+            {
+                if (!checkBalanceAccountListBox.Items.Contains(acc))
+                {
+                    checkBalanceAccountListBox.Items.Add(acc.accountNum);
+                }
+            }
 
         }
 
@@ -205,5 +223,28 @@ namespace ATM
            
         }
         //---------------------------------------------------------------------Login screen buttons end-------------------------------------------------
+        private void checkBalanceAccountReturnBtn_Click(object sender, EventArgs e)
+        {
+            checkBalanceAccountListPanel.Visible = false;
+            mainMenuPanel.Visible = true;
+        }
+
+        //check balance list seclection
+        private void checkBalanceAccountListBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            checkBalanceAccountListPanel.Visible = false;
+            checkBalancePanel.Visible = true;
+
+            //displays text based on the selected account
+            checkBalanceAccountBalanceTextBox.Text = $"${accountList.ElementAt(checkBalanceAccountListBox.SelectedIndex).balance}";
+            checkBalanceAccountNumberTextBox.Text = $"{accountList.ElementAt(checkBalanceAccountListBox.SelectedIndex).accountNum}";
+        }
+
+        //check balance return button
+        private void checkBalanceReturnBtn_Click(object sender, EventArgs e)
+        {
+            checkBalancePanel.Visible = false;
+            checkBalanceAccountListPanel.Visible = true;
+        }
     }
 }
