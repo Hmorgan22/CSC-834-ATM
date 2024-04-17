@@ -180,6 +180,7 @@ namespace ATM
             this.depositBtn.TabIndex = 2;
             this.depositBtn.Text = "Deposit Money";
             this.depositBtn.UseVisualStyleBackColor = true;
+            this.depositBtn.Click += new System.EventHandler(this.depositBtn_Click);
             // 
             // checkBalanceBtn
             // 
@@ -258,7 +259,7 @@ namespace ATM
             // 
             this.limitErrorPanel.Controls.Add(this.errorReturnBtn);
             this.limitErrorPanel.Controls.Add(this.label2);
-            this.limitErrorPanel.Location = new System.Drawing.Point(1436, 752);
+            this.limitErrorPanel.Location = new System.Drawing.Point(341, 318);
             this.limitErrorPanel.Name = "limitErrorPanel";
             this.limitErrorPanel.Size = new System.Drawing.Size(249, 158);
             this.limitErrorPanel.TabIndex = 6;
@@ -271,6 +272,7 @@ namespace ATM
             this.errorReturnBtn.TabIndex = 1;
             this.errorReturnBtn.Text = "Return";
             this.errorReturnBtn.UseVisualStyleBackColor = true;
+            this.errorReturnBtn.Click += new System.EventHandler(this.errorReturnBtn_Click);
             // 
             // label2
             // 
@@ -302,7 +304,7 @@ namespace ATM
             this.transferAmountPanel.Controls.Add(this.transfer1Btn);
             this.transferAmountPanel.Controls.Add(this.label3);
             this.transferAmountPanel.Controls.Add(this.transferAmountTextBox);
-            this.transferAmountPanel.Location = new System.Drawing.Point(1425, 425);
+            this.transferAmountPanel.Location = new System.Drawing.Point(1711, 427);
             this.transferAmountPanel.Name = "transferAmountPanel";
             this.transferAmountPanel.Size = new System.Drawing.Size(291, 321);
             this.transferAmountPanel.TabIndex = 7;
@@ -488,7 +490,7 @@ namespace ATM
             this.withdrawalPanel.Controls.Add(this.withdrawal20Btn);
             this.withdrawalPanel.Controls.Add(this.label7);
             this.withdrawalPanel.Controls.Add(this.label4);
-            this.withdrawalPanel.Location = new System.Drawing.Point(1184, 436);
+            this.withdrawalPanel.Location = new System.Drawing.Point(1458, 425);
             this.withdrawalPanel.Name = "withdrawalPanel";
             this.withdrawalPanel.Size = new System.Drawing.Size(235, 227);
             this.withdrawalPanel.TabIndex = 8;
@@ -578,7 +580,7 @@ namespace ATM
             this.depositPanel.Controls.Add(this.depositAccountReturnBtn);
             this.depositPanel.Controls.Add(this.depositAccountList);
             this.depositPanel.Controls.Add(this.label8);
-            this.depositPanel.Location = new System.Drawing.Point(1139, 678);
+            this.depositPanel.Location = new System.Drawing.Point(341, 12);
             this.depositPanel.Name = "depositPanel";
             this.depositPanel.Size = new System.Drawing.Size(280, 304);
             this.depositPanel.TabIndex = 9;
@@ -591,6 +593,7 @@ namespace ATM
             this.depositAccountReturnBtn.TabIndex = 5;
             this.depositAccountReturnBtn.Text = "Return";
             this.depositAccountReturnBtn.UseVisualStyleBackColor = true;
+            this.depositAccountReturnBtn.Click += new System.EventHandler(this.depositAccountReturnBtn_Click);
             // 
             // depositAccountList
             // 
@@ -604,6 +607,7 @@ namespace ATM
             this.depositAccountList.Name = "depositAccountList";
             this.depositAccountList.Size = new System.Drawing.Size(192, 199);
             this.depositAccountList.TabIndex = 4;
+            this.depositAccountList.SelectedIndexChanged += new System.EventHandler(this.depositAccountList_SelectedIndexChanged);
             // 
             // label8
             // 
@@ -621,7 +625,7 @@ namespace ATM
             this.checkBalancePanel.Controls.Add(this.checkBalanceAccountNumberTextBox);
             this.checkBalancePanel.Controls.Add(this.label9);
             this.checkBalancePanel.Controls.Add(this.label10);
-            this.checkBalancePanel.Location = new System.Drawing.Point(355, 325);
+            this.checkBalancePanel.Location = new System.Drawing.Point(12, 709);
             this.checkBalancePanel.Name = "checkBalancePanel";
             this.checkBalancePanel.Size = new System.Drawing.Size(255, 121);
             this.checkBalancePanel.TabIndex = 10;
@@ -678,7 +682,7 @@ namespace ATM
             this.checkBalanceAccountListPanel.Controls.Add(this.checkBalanceAccountReturnBtn);
             this.checkBalanceAccountListPanel.Controls.Add(this.checkBalanceAccountListBox);
             this.checkBalanceAccountListPanel.Controls.Add(this.label11);
-            this.checkBalanceAccountListPanel.Location = new System.Drawing.Point(330, 12);
+            this.checkBalanceAccountListPanel.Location = new System.Drawing.Point(12, 399);
             this.checkBalanceAccountListPanel.Name = "checkBalanceAccountListPanel";
             this.checkBalanceAccountListPanel.Size = new System.Drawing.Size(280, 304);
             this.checkBalanceAccountListPanel.TabIndex = 11;
@@ -733,10 +737,11 @@ namespace ATM
             this.depositAmountPanel.Controls.Add(this.deposit1Btn);
             this.depositAmountPanel.Controls.Add(this.label14);
             this.depositAmountPanel.Controls.Add(this.depositAmountTextBox);
-            this.depositAmountPanel.Location = new System.Drawing.Point(1733, 425);
+            this.depositAmountPanel.Location = new System.Drawing.Point(341, 482);
             this.depositAmountPanel.Name = "depositAmountPanel";
             this.depositAmountPanel.Size = new System.Drawing.Size(298, 222);
             this.depositAmountPanel.TabIndex = 12;
+            this.depositAmountPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.depositAmountPanel_Paint);
             // 
             // depositEnterBtn
             // 
@@ -746,6 +751,7 @@ namespace ATM
             this.depositEnterBtn.TabIndex = 40;
             this.depositEnterBtn.Text = "Enter";
             this.depositEnterBtn.UseVisualStyleBackColor = true;
+            this.depositEnterBtn.Click += new System.EventHandler(this.depositEnterBtn_Click);
             // 
             // depositEraseBtn
             // 
@@ -755,6 +761,7 @@ namespace ATM
             this.depositEraseBtn.TabIndex = 39;
             this.depositEraseBtn.Text = "<-";
             this.depositEraseBtn.UseVisualStyleBackColor = true;
+            this.depositEraseBtn.Click += new System.EventHandler(this.depositEraseBtn_Click);
             // 
             // deposit0Btn
             // 
@@ -764,6 +771,7 @@ namespace ATM
             this.deposit0Btn.TabIndex = 38;
             this.deposit0Btn.Text = "0";
             this.deposit0Btn.UseVisualStyleBackColor = true;
+            this.deposit0Btn.Click += new System.EventHandler(this.deposit0Btn_Click);
             // 
             // depositClrBtn
             // 
@@ -773,6 +781,7 @@ namespace ATM
             this.depositClrBtn.TabIndex = 37;
             this.depositClrBtn.Text = "Clear";
             this.depositClrBtn.UseVisualStyleBackColor = true;
+            this.depositClrBtn.Click += new System.EventHandler(this.depositClrBtn_Click);
             // 
             // deposit9Btn
             // 
@@ -782,6 +791,7 @@ namespace ATM
             this.deposit9Btn.TabIndex = 36;
             this.deposit9Btn.Text = "9";
             this.deposit9Btn.UseVisualStyleBackColor = true;
+            this.deposit9Btn.Click += new System.EventHandler(this.deposit9Btn_Click);
             // 
             // deposit8Btn
             // 
@@ -791,6 +801,7 @@ namespace ATM
             this.deposit8Btn.TabIndex = 35;
             this.deposit8Btn.Text = "8";
             this.deposit8Btn.UseVisualStyleBackColor = true;
+            this.deposit8Btn.Click += new System.EventHandler(this.deposit8Btn_Click);
             // 
             // deposit7Btn
             // 
@@ -800,6 +811,7 @@ namespace ATM
             this.deposit7Btn.TabIndex = 34;
             this.deposit7Btn.Text = "7";
             this.deposit7Btn.UseVisualStyleBackColor = true;
+            this.deposit7Btn.Click += new System.EventHandler(this.deposit7Btn_Click);
             // 
             // deposit6Btn
             // 
@@ -809,6 +821,7 @@ namespace ATM
             this.deposit6Btn.TabIndex = 33;
             this.deposit6Btn.Text = "6";
             this.deposit6Btn.UseVisualStyleBackColor = true;
+            this.deposit6Btn.Click += new System.EventHandler(this.deposit6Btn_Click);
             // 
             // deposit5Btn
             // 
@@ -818,6 +831,7 @@ namespace ATM
             this.deposit5Btn.TabIndex = 32;
             this.deposit5Btn.Text = "5";
             this.deposit5Btn.UseVisualStyleBackColor = true;
+            this.deposit5Btn.Click += new System.EventHandler(this.deposit5Btn_Click);
             // 
             // deposit4Btn
             // 
@@ -827,6 +841,7 @@ namespace ATM
             this.deposit4Btn.TabIndex = 31;
             this.deposit4Btn.Text = "4";
             this.deposit4Btn.UseVisualStyleBackColor = true;
+            this.deposit4Btn.Click += new System.EventHandler(this.deposit4Btn_Click);
             // 
             // deposit3Btn
             // 
@@ -836,6 +851,7 @@ namespace ATM
             this.deposit3Btn.TabIndex = 30;
             this.deposit3Btn.Text = "3";
             this.deposit3Btn.UseVisualStyleBackColor = true;
+            this.deposit3Btn.Click += new System.EventHandler(this.deposit3Btn_Click);
             // 
             // deposit2Btn
             // 
@@ -845,6 +861,7 @@ namespace ATM
             this.deposit2Btn.TabIndex = 29;
             this.deposit2Btn.Text = "2";
             this.deposit2Btn.UseVisualStyleBackColor = true;
+            this.deposit2Btn.Click += new System.EventHandler(this.deposit2Btn_Click);
             // 
             // deposit1Btn
             // 
@@ -854,6 +871,7 @@ namespace ATM
             this.deposit1Btn.TabIndex = 28;
             this.deposit1Btn.Text = "1";
             this.deposit1Btn.UseVisualStyleBackColor = true;
+            this.deposit1Btn.Click += new System.EventHandler(this.deposit1Btn_Click);
             // 
             // label14
             // 
@@ -905,7 +923,7 @@ namespace ATM
             this.transferFromAccountListPanel.Controls.Add(this.transferFromAccountListReturnBtn);
             this.transferFromAccountListPanel.Controls.Add(this.transferFromAccountListBox);
             this.transferFromAccountListPanel.Controls.Add(this.label16);
-            this.transferFromAccountListPanel.Location = new System.Drawing.Point(374, 672);
+            this.transferFromAccountListPanel.Location = new System.Drawing.Point(1472, 664);
             this.transferFromAccountListPanel.Name = "transferFromAccountListPanel";
             this.transferFromAccountListPanel.Size = new System.Drawing.Size(233, 310);
             this.transferFromAccountListPanel.TabIndex = 14;
@@ -946,7 +964,7 @@ namespace ATM
             this.transferToAccountListPanel.Controls.Add(this.transferToAccountListReturnBtn);
             this.transferToAccountListPanel.Controls.Add(this.transferToAccountListBox);
             this.transferToAccountListPanel.Controls.Add(this.label17);
-            this.transferToAccountListPanel.Location = new System.Drawing.Point(621, 678);
+            this.transferToAccountListPanel.Location = new System.Drawing.Point(1192, 668);
             this.transferToAccountListPanel.Name = "transferToAccountListPanel";
             this.transferToAccountListPanel.Size = new System.Drawing.Size(264, 310);
             this.transferToAccountListPanel.TabIndex = 15;

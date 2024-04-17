@@ -52,36 +52,6 @@ namespace ATM
             return tempList;
         }
 
-        //method to withdraw money
-        public void withdrawlMoney()
-        {
-
-        }
-
-        //method to depoist money
-        public void depositMoney()
-        {
-
-        }
-
-        //method to trasnfer money
-        public void transferMoney()
-        {
-
-        }
-
-        //method to check the users account balance
-        public void checkBalance()
-        {
-
-        }
-
-        //method to logout of the system
-        public void logout()
-        {
-
-        }
-
         //method to verify the users pin
         public int verifyPin(string customerPin)
         {

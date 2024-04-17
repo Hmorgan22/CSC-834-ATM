@@ -27,11 +27,5 @@ namespace ATM
             this.dailyTransactionTotal = dailyTransactionTotal;
             this.dailyTransactionDate = dailyTransactionDate;
         }
-
-        //method to get the balance
-        public void getBalance()
-        {
-
-        }
     }
 }

@@ -19,7 +19,6 @@ namespace ATM
         string transactionAmount = "";
         string customerPin = "";
 
-
         MySqlConnection conn = new MySqlConnection("server=csitmariadb.eku.edu;user=student;database=csc340_db;port=3306;password=Maroon@21?;");
 
         public Form1()
@@ -246,5 +245,150 @@ namespace ATM
             checkBalancePanel.Visible = false;
             checkBalanceAccountListPanel.Visible = true;
         }
+
+        //deposit money method
+        private void depositBtn_Click(object sender, EventArgs e)
+        {
+            //show screens
+            mainMenuPanel.Visible = false;
+            depositPanel.Visible = true;
+            transactionAmount = "";
+            accountList.Clear();
+
+            //gets a list of accounts for this customer
+            accountList = customer.getAccounts(customer.customerId);
+
+            //displays accounts on screen
+            depositAccountList.Items.Clear();
+            foreach (Account acc in accountList)
+            {
+                if (!depositAccountList.Items.Contains(acc))
+                {
+                    depositAccountList.Items.Add(acc.accountNum);
+                }
+            }
+        }
+
+        //deposit money selection
+        private void depositAccountList_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            //check if the account is below 3000 daily limit
+            if(accountList.ElementAt(depositAccountList.SelectedIndex).dailyTransactionTotal < 3000)
+            {
+                //show screens
+                depositPanel.Visible = false;
+                depositAmountPanel.Visible = true;
+                depositAmountTextBox.Text = transactionAmount;
+
+            }else
+            {
+                //show error message
+                depositPanel.Visible = false;
+                limitErrorPanel.Visible = true;
+            }
+
+            
+
+
+        }
+
+        private void depositAccountReturnBtn_Click(object sender, EventArgs e)
+        {
+            depositPanel.Visible = false;
+            mainMenuPanel.Visible = true;
+        }
+
+        private void errorReturnBtn_Click(object sender, EventArgs e)
+        {
+            limitErrorPanel.Visible = false;
+            mainMenuPanel.Visible = true;
+        }
+
+        private void depositAmountPanel_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        //deposit money enter method
+        private void depositEnterBtn_Click(object sender, EventArgs e)
+        {
+            //code to check logic *****************************************
+        }
+        //---------------------------------------------------------------------------Deposit Money Panel buttons ---------------------------------------
+        private void deposit1Btn_Click(object sender, EventArgs e)
+        {
+            transactionAmount += "1";
+            depositAmountTextBox.Text = transactionAmount;
+        }
+
+        private void deposit2Btn_Click(object sender, EventArgs e)
+        {
+            transactionAmount += "2";
+            depositAmountTextBox.Text = transactionAmount;
+        }
+
+        private void deposit3Btn_Click(object sender, EventArgs e)
+        {
+            transactionAmount += "3";
+            depositAmountTextBox.Text = transactionAmount;
+        }
+
+        private void deposit4Btn_Click(object sender, EventArgs e)
+        {
+            transactionAmount += "4";
+            depositAmountTextBox.Text = transactionAmount;
+        }
+
+        private void deposit5Btn_Click(object sender, EventArgs e)
+        {
+            transactionAmount += "5";
+            depositAmountTextBox.Text = transactionAmount;
+        }
+
+        private void deposit6Btn_Click(object sender, EventArgs e)
+        {
+            transactionAmount += "6";
+            depositAmountTextBox.Text = transactionAmount;
+        }
+
+        private void deposit7Btn_Click(object sender, EventArgs e)
+        {
+            transactionAmount += "7";
+            depositAmountTextBox.Text = transactionAmount;
+        }
+
+        private void deposit8Btn_Click(object sender, EventArgs e)
+        {
+            transactionAmount += "8";
+            depositAmountTextBox.Text = transactionAmount;
+        }
+
+        private void deposit9Btn_Click(object sender, EventArgs e)
+        {
+            transactionAmount += "9";
+            depositAmountTextBox.Text = transactionAmount;
+        }
+
+        private void deposit0Btn_Click(object sender, EventArgs e)
+        {
+            transactionAmount += "0";
+            depositAmountTextBox.Text = transactionAmount;
+        }
+
+        private void depositClrBtn_Click(object sender, EventArgs e)
+        {
+            transactionAmount = "";
+            depositAmountTextBox.Text = transactionAmount;
+        }
+
+        private void depositEraseBtn_Click(object sender, EventArgs e)
+        {
+            if (transactionAmount.Length >= 1)
+            {
+                transactionAmount = transactionAmount.Remove(transactionAmount.Length - 1);
+                depositAmountTextBox.Text = transactionAmount;
+            }
+        }
+        //-------------------------------------------------------------------------Deposit button end --------------------------------------------------
     }
 }
