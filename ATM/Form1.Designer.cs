@@ -218,7 +218,7 @@ namespace ATM
             this.withdrawalAccountSelectionPanel.Controls.Add(this.withdrawalAccountSelectReturnBtn);
             this.withdrawalAccountSelectionPanel.Controls.Add(this.withdrawalAccountList);
             this.withdrawalAccountSelectionPanel.Controls.Add(this.label1);
-            this.withdrawalAccountSelectionPanel.Location = new System.Drawing.Point(891, 678);
+            this.withdrawalAccountSelectionPanel.Location = new System.Drawing.Point(627, 9);
             this.withdrawalAccountSelectionPanel.Name = "withdrawalAccountSelectionPanel";
             this.withdrawalAccountSelectionPanel.Size = new System.Drawing.Size(242, 307);
             this.withdrawalAccountSelectionPanel.TabIndex = 5;
@@ -232,6 +232,7 @@ namespace ATM
             this.withdrawalAccountSelectReturnBtn.TabIndex = 2;
             this.withdrawalAccountSelectReturnBtn.Text = "Return";
             this.withdrawalAccountSelectReturnBtn.UseVisualStyleBackColor = true;
+            this.withdrawalAccountSelectReturnBtn.Click += new System.EventHandler(this.withdrawalAccountSelectReturnBtn_Click);
             // 
             // withdrawalAccountList
             // 
@@ -245,6 +246,7 @@ namespace ATM
             this.withdrawalAccountList.Name = "withdrawalAccountList";
             this.withdrawalAccountList.Size = new System.Drawing.Size(192, 199);
             this.withdrawalAccountList.TabIndex = 1;
+            this.withdrawalAccountList.SelectedIndexChanged += new System.EventHandler(this.withdrawalAccountList_SelectedIndexChanged);
             // 
             // label1
             // 
@@ -490,7 +492,7 @@ namespace ATM
             this.withdrawalPanel.Controls.Add(this.withdrawal20Btn);
             this.withdrawalPanel.Controls.Add(this.label7);
             this.withdrawalPanel.Controls.Add(this.label4);
-            this.withdrawalPanel.Location = new System.Drawing.Point(1458, 425);
+            this.withdrawalPanel.Location = new System.Drawing.Point(809, 422);
             this.withdrawalPanel.Name = "withdrawalPanel";
             this.withdrawalPanel.Size = new System.Drawing.Size(235, 227);
             this.withdrawalPanel.TabIndex = 8;
@@ -503,6 +505,7 @@ namespace ATM
             this.withdrawalReturnBtn.TabIndex = 8;
             this.withdrawalReturnBtn.Text = "Return";
             this.withdrawalReturnBtn.UseVisualStyleBackColor = true;
+            this.withdrawalReturnBtn.Click += new System.EventHandler(this.withdrawalReturnBtn_Click);
             // 
             // withdrawal200Btn
             // 
@@ -512,6 +515,7 @@ namespace ATM
             this.withdrawal200Btn.TabIndex = 7;
             this.withdrawal200Btn.Text = "$200";
             this.withdrawal200Btn.UseVisualStyleBackColor = true;
+            this.withdrawal200Btn.Click += new System.EventHandler(this.withdrawal200Btn_Click);
             // 
             // withdrawal100Btn
             // 
@@ -521,6 +525,7 @@ namespace ATM
             this.withdrawal100Btn.TabIndex = 6;
             this.withdrawal100Btn.Text = "$100";
             this.withdrawal100Btn.UseVisualStyleBackColor = true;
+            this.withdrawal100Btn.Click += new System.EventHandler(this.withdrawal100Btn_Click);
             // 
             // withdrawal80Btn
             // 
@@ -530,6 +535,7 @@ namespace ATM
             this.withdrawal80Btn.TabIndex = 5;
             this.withdrawal80Btn.Text = "$80";
             this.withdrawal80Btn.UseVisualStyleBackColor = true;
+            this.withdrawal80Btn.Click += new System.EventHandler(this.withdrawal80Btn_Click);
             // 
             // withdrawal60Btn
             // 
@@ -539,6 +545,7 @@ namespace ATM
             this.withdrawal60Btn.TabIndex = 4;
             this.withdrawal60Btn.Text = "$60";
             this.withdrawal60Btn.UseVisualStyleBackColor = true;
+            this.withdrawal60Btn.Click += new System.EventHandler(this.withdrawal60Btn_Click);
             // 
             // withdrawal40Btn
             // 
@@ -548,6 +555,7 @@ namespace ATM
             this.withdrawal40Btn.TabIndex = 3;
             this.withdrawal40Btn.Text = "$40";
             this.withdrawal40Btn.UseVisualStyleBackColor = true;
+            this.withdrawal40Btn.Click += new System.EventHandler(this.withdrawal40Btn_Click);
             // 
             // withdrawal20Btn
             // 
@@ -557,6 +565,7 @@ namespace ATM
             this.withdrawal20Btn.TabIndex = 2;
             this.withdrawal20Btn.Text = "$20";
             this.withdrawal20Btn.UseVisualStyleBackColor = true;
+            this.withdrawal20Btn.Click += new System.EventHandler(this.withdrawal20Btn_Click);
             // 
             // label7
             // 
@@ -737,7 +746,7 @@ namespace ATM
             this.depositAmountPanel.Controls.Add(this.deposit1Btn);
             this.depositAmountPanel.Controls.Add(this.label14);
             this.depositAmountPanel.Controls.Add(this.depositAmountTextBox);
-            this.depositAmountPanel.Location = new System.Drawing.Point(756, 328);
+            this.depositAmountPanel.Location = new System.Drawing.Point(307, 481);
             this.depositAmountPanel.Name = "depositAmountPanel";
             this.depositAmountPanel.Size = new System.Drawing.Size(298, 222);
             this.depositAmountPanel.TabIndex = 12;
@@ -894,7 +903,7 @@ namespace ATM
             // 
             this.overWithdrawErrorPanel.Controls.Add(this.overWithdrawErrorReturnBtn);
             this.overWithdrawErrorPanel.Controls.Add(this.label15);
-            this.overWithdrawErrorPanel.Location = new System.Drawing.Point(1746, 885);
+            this.overWithdrawErrorPanel.Location = new System.Drawing.Point(1069, 481);
             this.overWithdrawErrorPanel.Name = "overWithdrawErrorPanel";
             this.overWithdrawErrorPanel.Size = new System.Drawing.Size(269, 115);
             this.overWithdrawErrorPanel.TabIndex = 13;
@@ -907,6 +916,7 @@ namespace ATM
             this.overWithdrawErrorReturnBtn.TabIndex = 3;
             this.overWithdrawErrorReturnBtn.Text = "Return";
             this.overWithdrawErrorReturnBtn.UseVisualStyleBackColor = true;
+            this.overWithdrawErrorReturnBtn.Click += new System.EventHandler(this.overWithdrawErrorReturnBtn_Click);
             // 
             // label15
             // 

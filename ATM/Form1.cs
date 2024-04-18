@@ -49,9 +49,26 @@ namespace ATM
             
         }
 
+        //withdraw button
         private void button1_Click_1(object sender, EventArgs e)
         {
+            mainMenuPanel.Visible = false;
+            withdrawalAccountSelectionPanel.Visible = true;
+            transactionAmount = "";
+            accountList.Clear();
 
+            //gets a list of accounts for this customer
+            accountList = customer.getAccounts(customer.customerId);
+
+            //displays accounts on screen
+            withdrawalAccountList.Items.Clear();
+            foreach (Account acc in accountList)
+            {
+                if (!withdrawalAccountList.Items.Contains(acc))
+                {
+                    withdrawalAccountList.Items.Add(acc.accountNum);
+                }
+            }
         }
 
         //method to check the balance of the account
@@ -74,7 +91,6 @@ namespace ATM
                     checkBalanceAccountListBox.Items.Add(acc.accountNum);
                 }
             }
-
         }
 
         private void label6_Click(object sender, EventArgs e)
@@ -358,7 +374,7 @@ namespace ATM
                 Transaction tempTrans = new Transaction(accountNumber, "Deposit", transTotal);
 
                 //update transaction into DB
-                tempTrans.saveTransaction(accountNumber, "Deposit", transactionAmount, accountNumber, 0);
+                tempTrans.saveTransaction(accountNumber, "Deposit", transactionAmount, 0, accountNumber);
 
                 //swap screens
                 depositAmountPanel.Visible = false;
@@ -369,7 +385,6 @@ namespace ATM
                 depositAmountPanel.Visible = false;
                 limitErrorPanel.Visible = true;
             }
-
         }
         //---------------------------------------------------------------------------Deposit Money Panel buttons start------------------------------------
         private void deposit1Btn_Click(object sender, EventArgs e)
@@ -447,5 +462,362 @@ namespace ATM
             }
         }
         //-------------------------------------------------------------------------Deposit button end --------------------------------------------------
+
+        //withdraw method selection
+        private void withdrawalAccountList_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                //check if the account is below 3000 daily limit
+                if (accountList.ElementAt(withdrawalAccountList.SelectedIndex).dailyTransactionTotal < 3000)
+                {
+                    //show screens
+                    withdrawalAccountSelectionPanel.Visible = false;
+                    withdrawalPanel.Visible = true;
+                    withdrawalAccountList.Text = transactionAmount;
+                }
+                else
+                {
+                    //show error message
+                    withdrawalAccountSelectionPanel.Visible = false;
+                    limitErrorPanel.Visible = true;
+                }
+            }
+            catch (Exception ex)
+            {
+                withdrawalAccountSelectionPanel.Visible = false;
+                mainMenuPanel.Visible = true;
+            }
+        }
+
+        private void withdrawalAccountSelectReturnBtn_Click(object sender, EventArgs e)
+        {
+            withdrawalAccountSelectionPanel.Visible = false;
+            mainMenuPanel.Visible = true;
+        }
+
+        private void overWithdrawErrorReturnBtn_Click(object sender, EventArgs e)
+        {
+            overWithdrawErrorPanel.Visible = false;
+            withdrawalPanel.Visible = true;
+        }
+
+        private void withdrawalReturnBtn_Click(object sender, EventArgs e)
+        {
+            withdrawalPanel.Visible = false;
+            mainMenuPanel.Visible = true;
+        }
+
+        //method to withdraw $20 
+        private void withdrawal20Btn_Click(object sender, EventArgs e)
+        {
+            //gets current time and last trans time
+            DateTime date1 = Convert.ToDateTime(accountList.ElementAt(withdrawalAccountList.SelectedIndex).dailyTransactionDate);
+            DateTime date2 = DateTime.Now;
+
+            //checks to see if its the same day or not
+            if (DateTime.Compare(date1.Date, date2.Date) != 0)
+            {
+                accountList.ElementAt(withdrawalAccountList.SelectedIndex).dailyTransactionTotal = 0;
+            }
+
+            //checks to see if the the transaction total is less than 3000
+            if (accountList.ElementAt(withdrawalAccountList.SelectedIndex).dailyTransactionTotal + 20 <= 3000)
+            {
+                //check to see if the account has the balance
+                if (accountList.ElementAt(withdrawalAccountList.SelectedIndex).balance >= 20)
+                {
+                    double newBalance = accountList.ElementAt(withdrawalAccountList.SelectedIndex).balance -= 20;
+                    int accountNumber = accountList.ElementAt(withdrawalAccountList.SelectedIndex).accountNum;
+                    double transTotal = accountList.ElementAt(withdrawalAccountList.SelectedIndex).dailyTransactionTotal += 20;
+
+                    //create temp account 
+                    Account tempAccount = new Account(accountNumber, 0, newBalance, 3000, transTotal, DateTime.Now.ToString());
+
+                    //updated deposit into DB
+                    tempAccount.updateDb(newBalance, transTotal, accountNumber);
+
+                    //create temp transaction
+                    Transaction tempTrans = new Transaction(accountNumber, "Withdrawal", transTotal);
+
+                    //update transaction into DB
+                    tempTrans.saveTransaction(accountNumber, "Withdrawal", "20", accountNumber, 0);
+
+                    //swap screens
+                    withdrawalPanel.Visible = false;
+                    mainMenuPanel.Visible = true;
+                }
+                else
+                {
+                    withdrawalPanel.Visible = false;
+                    overWithdrawErrorPanel.Visible = true;
+                }
+            }
+            else
+            {
+                withdrawalPanel.Visible = false;
+                limitErrorPanel.Visible = true;
+            }
+        }
+
+        //method to withdraw $40
+        private void withdrawal40Btn_Click(object sender, EventArgs e)
+        {
+            //gets current time and last trans time
+            DateTime date1 = Convert.ToDateTime(accountList.ElementAt(withdrawalAccountList.SelectedIndex).dailyTransactionDate);
+            DateTime date2 = DateTime.Now;
+
+            //checks to see if its the same day or not
+            if (DateTime.Compare(date1.Date, date2.Date) != 0)
+            {
+                accountList.ElementAt(withdrawalAccountList.SelectedIndex).dailyTransactionTotal = 0;
+            }
+
+            //checks to see if the the transaction total is less than 3000
+            if (accountList.ElementAt(withdrawalAccountList.SelectedIndex).dailyTransactionTotal + 40 <= 3000)
+            {
+                //check to see if the account has the balance
+                if (accountList.ElementAt(withdrawalAccountList.SelectedIndex).balance >= 40)
+                {
+                    double newBalance = accountList.ElementAt(withdrawalAccountList.SelectedIndex).balance -= 40;
+                    int accountNumber = accountList.ElementAt(withdrawalAccountList.SelectedIndex).accountNum;
+                    double transTotal = accountList.ElementAt(withdrawalAccountList.SelectedIndex).dailyTransactionTotal += 40;
+
+                    //create temp account 
+                    Account tempAccount = new Account(accountNumber, 0, newBalance, 3000, transTotal, DateTime.Now.ToString());
+
+                    //updated deposit into DB
+                    tempAccount.updateDb(newBalance, transTotal, accountNumber);
+
+                    //create temp transaction
+                    Transaction tempTrans = new Transaction(accountNumber, "Withdrawal", transTotal);
+
+                    //update transaction into DB
+                    tempTrans.saveTransaction(accountNumber, "Withdrawal", "40", accountNumber, 0);
+
+                    //swap screens
+                    withdrawalPanel.Visible = false;
+                    mainMenuPanel.Visible = true;
+                }
+                else
+                {
+                    withdrawalPanel.Visible = false;
+                    overWithdrawErrorPanel.Visible = true;
+                }
+            }
+            else
+            {
+                withdrawalPanel.Visible = false;
+                limitErrorPanel.Visible = true;
+            }
+        }
+
+        //method to withdraw $60
+        private void withdrawal60Btn_Click(object sender, EventArgs e)
+        {
+            //gets current time and last trans time
+            DateTime date1 = Convert.ToDateTime(accountList.ElementAt(withdrawalAccountList.SelectedIndex).dailyTransactionDate);
+            DateTime date2 = DateTime.Now;
+
+            //checks to see if its the same day or not
+            if (DateTime.Compare(date1.Date, date2.Date) != 0)
+            {
+                accountList.ElementAt(withdrawalAccountList.SelectedIndex).dailyTransactionTotal = 0;
+            }
+
+            //checks to see if the the transaction total is less than 3000
+            if (accountList.ElementAt(withdrawalAccountList.SelectedIndex).dailyTransactionTotal + 60 <= 3000)
+            {
+                //check to see if the account has the balance
+                if (accountList.ElementAt(withdrawalAccountList.SelectedIndex).balance >= 60)
+                {
+                    double newBalance = accountList.ElementAt(withdrawalAccountList.SelectedIndex).balance -= 60;
+                    int accountNumber = accountList.ElementAt(withdrawalAccountList.SelectedIndex).accountNum;
+                    double transTotal = accountList.ElementAt(withdrawalAccountList.SelectedIndex).dailyTransactionTotal += 60;
+
+                    //create temp account 
+                    Account tempAccount = new Account(accountNumber, 0, newBalance, 3000, transTotal, DateTime.Now.ToString());
+
+                    //updated deposit into DB
+                    tempAccount.updateDb(newBalance, transTotal, accountNumber);
+
+                    //create temp transaction
+                    Transaction tempTrans = new Transaction(accountNumber, "Withdrawal", transTotal);
+
+                    //update transaction into DB
+                    tempTrans.saveTransaction(accountNumber, "Withdrawal", "60", accountNumber, 0);
+
+                    //swap screens
+                    withdrawalPanel.Visible = false;
+                    mainMenuPanel.Visible = true;
+                }
+                else
+                {
+                    withdrawalPanel.Visible = false;
+                    overWithdrawErrorPanel.Visible = true;
+                }
+            }
+            else
+            {
+                withdrawalPanel.Visible = false;
+                limitErrorPanel.Visible = true;
+            }
+        }
+
+        //method to withdraw $80
+        private void withdrawal80Btn_Click(object sender, EventArgs e)
+        {
+            //gets current time and last trans time
+            DateTime date1 = Convert.ToDateTime(accountList.ElementAt(withdrawalAccountList.SelectedIndex).dailyTransactionDate);
+            DateTime date2 = DateTime.Now;
+
+            //checks to see if its the same day or not
+            if (DateTime.Compare(date1.Date, date2.Date) != 0)
+            {
+                accountList.ElementAt(withdrawalAccountList.SelectedIndex).dailyTransactionTotal = 0;
+            }
+
+            //checks to see if the the transaction total is less than 3000
+            if (accountList.ElementAt(withdrawalAccountList.SelectedIndex).dailyTransactionTotal + 80 <= 3000)
+            {
+                //check to see if the account has the balance
+                if (accountList.ElementAt(withdrawalAccountList.SelectedIndex).balance >= 80)
+                {
+                    double newBalance = accountList.ElementAt(withdrawalAccountList.SelectedIndex).balance -= 80;
+                    int accountNumber = accountList.ElementAt(withdrawalAccountList.SelectedIndex).accountNum;
+                    double transTotal = accountList.ElementAt(withdrawalAccountList.SelectedIndex).dailyTransactionTotal += 80;
+
+                    //create temp account 
+                    Account tempAccount = new Account(accountNumber, 0, newBalance, 3000, transTotal, DateTime.Now.ToString());
+
+                    //updated deposit into DB
+                    tempAccount.updateDb(newBalance, transTotal, accountNumber);
+
+                    //create temp transaction
+                    Transaction tempTrans = new Transaction(accountNumber, "Withdrawal", transTotal);
+
+                    //update transaction into DB
+                    tempTrans.saveTransaction(accountNumber, "Withdrawal", "80", accountNumber, 0);
+
+                    //swap screens
+                    withdrawalPanel.Visible = false;
+                    mainMenuPanel.Visible = true;
+                }
+                else
+                {
+                    withdrawalPanel.Visible = false;
+                    overWithdrawErrorPanel.Visible = true;
+                }
+            }
+            else
+            {
+                withdrawalPanel.Visible = false;
+                limitErrorPanel.Visible = true;
+            }
+        }
+
+        //method to withdraw $100
+        private void withdrawal100Btn_Click(object sender, EventArgs e)
+        {
+            //gets current time and last trans time
+            DateTime date1 = Convert.ToDateTime(accountList.ElementAt(withdrawalAccountList.SelectedIndex).dailyTransactionDate);
+            DateTime date2 = DateTime.Now;
+
+            //checks to see if its the same day or not
+            if (DateTime.Compare(date1.Date, date2.Date) != 0)
+            {
+                accountList.ElementAt(withdrawalAccountList.SelectedIndex).dailyTransactionTotal = 0;
+            }
+
+            //checks to see if the the transaction total is less than 3000
+            if (accountList.ElementAt(withdrawalAccountList.SelectedIndex).dailyTransactionTotal + 100 <= 3000)
+            {
+                //check to see if the account has the balance
+                if (accountList.ElementAt(withdrawalAccountList.SelectedIndex).balance >= 100)
+                {
+                    double newBalance = accountList.ElementAt(withdrawalAccountList.SelectedIndex).balance -= 100;
+                    int accountNumber = accountList.ElementAt(withdrawalAccountList.SelectedIndex).accountNum;
+                    double transTotal = accountList.ElementAt(withdrawalAccountList.SelectedIndex).dailyTransactionTotal += 100;
+
+                    //create temp account 
+                    Account tempAccount = new Account(accountNumber, 0, newBalance, 3000, transTotal, DateTime.Now.ToString());
+
+                    //updated deposit into DB
+                    tempAccount.updateDb(newBalance, transTotal, accountNumber);
+
+                    //create temp transaction
+                    Transaction tempTrans = new Transaction(accountNumber, "Withdrawal", transTotal);
+
+                    //update transaction into DB
+                    tempTrans.saveTransaction(accountNumber, "Withdrawal", "100", accountNumber, 0);
+
+                    //swap screens
+                    withdrawalPanel.Visible = false;
+                    mainMenuPanel.Visible = true;
+                }
+                else
+                {
+                    withdrawalPanel.Visible = false;
+                    overWithdrawErrorPanel.Visible = true;
+                }
+            }
+            else
+            {
+                withdrawalPanel.Visible = false;
+                limitErrorPanel.Visible = true;
+            }
+        }
+
+        //method to withdraw $200
+        private void withdrawal200Btn_Click(object sender, EventArgs e)
+        {
+            //gets current time and last trans time
+            DateTime date1 = Convert.ToDateTime(accountList.ElementAt(withdrawalAccountList.SelectedIndex).dailyTransactionDate);
+            DateTime date2 = DateTime.Now;
+
+            //checks to see if its the same day or not
+            if (DateTime.Compare(date1.Date, date2.Date) != 0)
+            {
+                accountList.ElementAt(withdrawalAccountList.SelectedIndex).dailyTransactionTotal = 0;
+            }
+
+            //checks to see if the the transaction total is less than 3000
+            if (accountList.ElementAt(withdrawalAccountList.SelectedIndex).dailyTransactionTotal + 200 <= 3000)
+            {
+                //check to see if the account has the balance
+                if (accountList.ElementAt(withdrawalAccountList.SelectedIndex).balance >= 200)
+                {
+                    double newBalance = accountList.ElementAt(withdrawalAccountList.SelectedIndex).balance -= 200;
+                    int accountNumber = accountList.ElementAt(withdrawalAccountList.SelectedIndex).accountNum;
+                    double transTotal = accountList.ElementAt(withdrawalAccountList.SelectedIndex).dailyTransactionTotal += 200;
+
+                    //create temp account 
+                    Account tempAccount = new Account(accountNumber, 0, newBalance, 3000, transTotal, DateTime.Now.ToString());
+
+                    //updated deposit into DB
+                    tempAccount.updateDb(newBalance, transTotal, accountNumber);
+
+                    //create temp transaction
+                    Transaction tempTrans = new Transaction(accountNumber, "Withdrawal", transTotal);
+
+                    //update transaction into DB
+                    tempTrans.saveTransaction(accountNumber, "Withdrawal", "200", accountNumber, 0);
+
+                    //swap screens
+                    withdrawalPanel.Visible = false;
+                    mainMenuPanel.Visible = true;
+                }
+                else
+                {
+                    withdrawalPanel.Visible = false;
+                    overWithdrawErrorPanel.Visible = true;
+                }
+            }
+            else
+            {
+                withdrawalPanel.Visible = false;
+                limitErrorPanel.Visible = true;
+            }
+        }
     }
 }
