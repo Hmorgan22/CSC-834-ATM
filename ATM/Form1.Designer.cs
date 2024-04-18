@@ -737,7 +737,7 @@ namespace ATM
             this.depositAmountPanel.Controls.Add(this.deposit1Btn);
             this.depositAmountPanel.Controls.Add(this.label14);
             this.depositAmountPanel.Controls.Add(this.depositAmountTextBox);
-            this.depositAmountPanel.Location = new System.Drawing.Point(341, 482);
+            this.depositAmountPanel.Location = new System.Drawing.Point(756, 328);
             this.depositAmountPanel.Name = "depositAmountPanel";
             this.depositAmountPanel.Size = new System.Drawing.Size(298, 222);
             this.depositAmountPanel.TabIndex = 12;

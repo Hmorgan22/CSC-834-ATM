@@ -231,12 +231,21 @@ namespace ATM
         //check balance list seclection
         private void checkBalanceAccountListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            checkBalanceAccountListPanel.Visible = false;
-            checkBalancePanel.Visible = true;
+            try
+            {
+                checkBalanceAccountListPanel.Visible = false;
+                checkBalancePanel.Visible = true;
 
-            //displays text based on the selected account
-            checkBalanceAccountBalanceTextBox.Text = $"${accountList.ElementAt(checkBalanceAccountListBox.SelectedIndex).balance}";
-            checkBalanceAccountNumberTextBox.Text = $"{accountList.ElementAt(checkBalanceAccountListBox.SelectedIndex).accountNum}";
+                //displays text based on the selected account
+                checkBalanceAccountBalanceTextBox.Text = $"${accountList.ElementAt(checkBalanceAccountListBox.SelectedIndex).balance}";
+                checkBalanceAccountNumberTextBox.Text = $"{accountList.ElementAt(checkBalanceAccountListBox.SelectedIndex).accountNum}";
+            }
+            catch (Exception ex)
+            {
+                checkBalanceAccountListPanel.Visible = false;
+                checkBalancePanel.Visible = false;
+                mainMenuPanel.Visible = true;
+            }
         }
 
         //check balance return button
@@ -272,24 +281,29 @@ namespace ATM
         //deposit money selection
         private void depositAccountList_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //check if the account is below 3000 daily limit
-            if(accountList.ElementAt(depositAccountList.SelectedIndex).dailyTransactionTotal < 3000)
+            try
             {
-                //show screens
-                depositPanel.Visible = false;
-                depositAmountPanel.Visible = true;
-                depositAmountTextBox.Text = transactionAmount;
-
-            }else
-            {
-                //show error message
-                depositPanel.Visible = false;
-                limitErrorPanel.Visible = true;
+                //check if the account is below 3000 daily limit
+                if (accountList.ElementAt(depositAccountList.SelectedIndex).dailyTransactionTotal < 3000)
+                {
+                    //show screens
+                    depositPanel.Visible = false;
+                    depositAmountPanel.Visible = true;
+                    depositAmountTextBox.Text = transactionAmount;
+                }
+                else
+                {
+                    //show error message
+                    depositPanel.Visible = false;
+                    limitErrorPanel.Visible = true;
+                }
             }
-
+            catch (Exception ex)
+            {
+                depositPanel.Visible = false;
+                mainMenuPanel.Visible = true;
+            }
             
-
-
         }
 
         private void depositAccountReturnBtn_Click(object sender, EventArgs e)
@@ -312,9 +326,52 @@ namespace ATM
         //deposit money enter method
         private void depositEnterBtn_Click(object sender, EventArgs e)
         {
-            //code to check logic *****************************************
+            //gets current time and last trans time
+            DateTime date1 = Convert.ToDateTime(accountList.ElementAt(depositAccountList.SelectedIndex).dailyTransactionDate);
+            DateTime date2 = DateTime.Now;
+
+            //checks to see if its the same day or not
+            if (DateTime.Compare(date1.Date, date2.Date) != 0)
+            {
+                accountList.ElementAt(depositAccountList.SelectedIndex).dailyTransactionTotal = 0;
+            }
+
+            //checks to see if the amount text is empty
+            if (string.IsNullOrEmpty(depositAmountTextBox.Text))
+                transactionAmount = "0";
+
+            //checks to see if the the transaction total is less than 3000
+            if (accountList.ElementAt(depositAccountList.SelectedIndex).dailyTransactionTotal + Int32.Parse(transactionAmount) <= 3000)
+            {
+               
+                double newBalance = accountList.ElementAt(depositAccountList.SelectedIndex).balance += Int32.Parse(transactionAmount);
+                int accountNumber = accountList.ElementAt(depositAccountList.SelectedIndex).accountNum;
+                double transTotal = accountList.ElementAt(depositAccountList.SelectedIndex).dailyTransactionTotal += Int32.Parse(transactionAmount);
+
+                //ceate temp account 
+                Account tempAccount = new Account(accountNumber, 0, newBalance, 3000, transTotal, DateTime.Now.ToString());
+
+                //updated deposit into DB
+                tempAccount.updateDb(newBalance, transTotal, accountNumber);
+
+                //create temp transaction
+                Transaction tempTrans = new Transaction(accountNumber, "Deposit", transTotal);
+
+                //update transaction into DB
+                tempTrans.saveTransaction(accountNumber, "Deposit", transactionAmount, accountNumber, 0);
+
+                //swap screens
+                depositAmountPanel.Visible = false;
+                mainMenuPanel.Visible = true;
+            }
+            else
+            {
+                depositAmountPanel.Visible = false;
+                limitErrorPanel.Visible = true;
+            }
+
         }
-        //---------------------------------------------------------------------------Deposit Money Panel buttons ---------------------------------------
+        //---------------------------------------------------------------------------Deposit Money Panel buttons start------------------------------------
         private void deposit1Btn_Click(object sender, EventArgs e)
         {
             transactionAmount += "1";

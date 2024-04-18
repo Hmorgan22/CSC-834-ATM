@@ -15,8 +15,6 @@ namespace ATM
         public int pin { get; set; }
         public int accountNum { get; set; }
 
-       
-
         //constructor
         public Customer(int customerId)
         {
