@@ -135,6 +135,9 @@ namespace ATM
             this.loginPinEorrorPanel = new System.Windows.Forms.Panel();
             this.loginPinErrorMessageBtn = new System.Windows.Forms.Button();
             this.label13 = new System.Windows.Forms.Label();
+            this.transferErrorPanel = new System.Windows.Forms.Panel();
+            this.transferErrorReturnButton = new System.Windows.Forms.Button();
+            this.label19 = new System.Windows.Forms.Label();
             this.mainMenuPanel.SuspendLayout();
             this.withdrawalAccountSelectionPanel.SuspendLayout();
             this.limitErrorPanel.SuspendLayout();
@@ -150,6 +153,7 @@ namespace ATM
             this.atmCashAmountErrorPanel.SuspendLayout();
             this.loginPanel.SuspendLayout();
             this.loginPinEorrorPanel.SuspendLayout();
+            this.transferErrorPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // logoutBtn
@@ -200,6 +204,7 @@ namespace ATM
             this.transferBtn.TabIndex = 4;
             this.transferBtn.Text = "Transfer Money";
             this.transferBtn.UseVisualStyleBackColor = true;
+            this.transferBtn.Click += new System.EventHandler(this.transferBtn_Click);
             // 
             // mainMenuPanel
             // 
@@ -208,10 +213,11 @@ namespace ATM
             this.mainMenuPanel.Controls.Add(this.checkBalanceBtn);
             this.mainMenuPanel.Controls.Add(this.transferBtn);
             this.mainMenuPanel.Controls.Add(this.depositBtn);
-            this.mainMenuPanel.Location = new System.Drawing.Point(1216, 12);
+            this.mainMenuPanel.Location = new System.Drawing.Point(468, 362);
             this.mainMenuPanel.Name = "mainMenuPanel";
             this.mainMenuPanel.Size = new System.Drawing.Size(815, 407);
             this.mainMenuPanel.TabIndex = 5;
+            this.mainMenuPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.mainMenuPanel_Paint);
             // 
             // withdrawalAccountSelectionPanel
             // 
@@ -261,10 +267,11 @@ namespace ATM
             // 
             this.limitErrorPanel.Controls.Add(this.errorReturnBtn);
             this.limitErrorPanel.Controls.Add(this.label2);
-            this.limitErrorPanel.Location = new System.Drawing.Point(341, 318);
+            this.limitErrorPanel.Location = new System.Drawing.Point(1314, 400);
             this.limitErrorPanel.Name = "limitErrorPanel";
             this.limitErrorPanel.Size = new System.Drawing.Size(249, 158);
             this.limitErrorPanel.TabIndex = 6;
+            this.limitErrorPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.limitErrorPanel_Paint);
             // 
             // errorReturnBtn
             // 
@@ -306,10 +313,11 @@ namespace ATM
             this.transferAmountPanel.Controls.Add(this.transfer1Btn);
             this.transferAmountPanel.Controls.Add(this.label3);
             this.transferAmountPanel.Controls.Add(this.transferAmountTextBox);
-            this.transferAmountPanel.Location = new System.Drawing.Point(1711, 427);
+            this.transferAmountPanel.Location = new System.Drawing.Point(1299, 566);
             this.transferAmountPanel.Name = "transferAmountPanel";
             this.transferAmountPanel.Size = new System.Drawing.Size(291, 321);
             this.transferAmountPanel.TabIndex = 7;
+            this.transferAmountPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.transferAmountPanel_Paint);
             // 
             // transferAccountBalanceText
             // 
@@ -354,6 +362,7 @@ namespace ATM
             this.transferEnterBtn.TabIndex = 20;
             this.transferEnterBtn.Text = "Enter";
             this.transferEnterBtn.UseVisualStyleBackColor = true;
+            this.transferEnterBtn.Click += new System.EventHandler(this.transferEnterBtn_Click);
             // 
             // transferEraseBtn
             // 
@@ -363,6 +372,7 @@ namespace ATM
             this.transferEraseBtn.TabIndex = 19;
             this.transferEraseBtn.Text = "<-";
             this.transferEraseBtn.UseVisualStyleBackColor = true;
+            this.transferEraseBtn.Click += new System.EventHandler(this.transferEraseBtn_Click);
             // 
             // transfer0Btn
             // 
@@ -372,6 +382,7 @@ namespace ATM
             this.transfer0Btn.TabIndex = 18;
             this.transfer0Btn.Text = "0";
             this.transfer0Btn.UseVisualStyleBackColor = true;
+            this.transfer0Btn.Click += new System.EventHandler(this.transfer0Btn_Click);
             // 
             // transferClrbtn
             // 
@@ -381,6 +392,7 @@ namespace ATM
             this.transferClrbtn.TabIndex = 17;
             this.transferClrbtn.Text = "Clear";
             this.transferClrbtn.UseVisualStyleBackColor = true;
+            this.transferClrbtn.Click += new System.EventHandler(this.transferClrbtn_Click);
             // 
             // transffer9Btn
             // 
@@ -390,6 +402,7 @@ namespace ATM
             this.transffer9Btn.TabIndex = 16;
             this.transffer9Btn.Text = "9";
             this.transffer9Btn.UseVisualStyleBackColor = true;
+            this.transffer9Btn.Click += new System.EventHandler(this.transffer9Btn_Click);
             // 
             // transfer8Btn
             // 
@@ -399,6 +412,7 @@ namespace ATM
             this.transfer8Btn.TabIndex = 15;
             this.transfer8Btn.Text = "8";
             this.transfer8Btn.UseVisualStyleBackColor = true;
+            this.transfer8Btn.Click += new System.EventHandler(this.transfer8Btn_Click);
             // 
             // transfer7Btn
             // 
@@ -408,6 +422,7 @@ namespace ATM
             this.transfer7Btn.TabIndex = 14;
             this.transfer7Btn.Text = "7";
             this.transfer7Btn.UseVisualStyleBackColor = true;
+            this.transfer7Btn.Click += new System.EventHandler(this.transfer7Btn_Click);
             // 
             // transfer6Btn
             // 
@@ -417,6 +432,7 @@ namespace ATM
             this.transfer6Btn.TabIndex = 13;
             this.transfer6Btn.Text = "6";
             this.transfer6Btn.UseVisualStyleBackColor = true;
+            this.transfer6Btn.Click += new System.EventHandler(this.transfer6Btn_Click);
             // 
             // transfer5Btn
             // 
@@ -426,6 +442,7 @@ namespace ATM
             this.transfer5Btn.TabIndex = 12;
             this.transfer5Btn.Text = "5";
             this.transfer5Btn.UseVisualStyleBackColor = true;
+            this.transfer5Btn.Click += new System.EventHandler(this.transfer5Btn_Click);
             // 
             // transfer4Btn
             // 
@@ -435,6 +452,7 @@ namespace ATM
             this.transfer4Btn.TabIndex = 11;
             this.transfer4Btn.Text = "4";
             this.transfer4Btn.UseVisualStyleBackColor = true;
+            this.transfer4Btn.Click += new System.EventHandler(this.transfer4Btn_Click);
             // 
             // transfer3Btn
             // 
@@ -444,6 +462,7 @@ namespace ATM
             this.transfer3Btn.TabIndex = 10;
             this.transfer3Btn.Text = "3";
             this.transfer3Btn.UseVisualStyleBackColor = true;
+            this.transfer3Btn.Click += new System.EventHandler(this.transfer3Btn_Click);
             // 
             // transfer2Btn
             // 
@@ -453,6 +472,7 @@ namespace ATM
             this.transfer2Btn.TabIndex = 9;
             this.transfer2Btn.Text = "2";
             this.transfer2Btn.UseVisualStyleBackColor = true;
+            this.transfer2Btn.Click += new System.EventHandler(this.transfer2Btn_Click);
             // 
             // transfer1Btn
             // 
@@ -462,6 +482,7 @@ namespace ATM
             this.transfer1Btn.TabIndex = 8;
             this.transfer1Btn.Text = "1";
             this.transfer1Btn.UseVisualStyleBackColor = true;
+            this.transfer1Btn.Click += new System.EventHandler(this.transfer1Btn_Click);
             // 
             // label3
             // 
@@ -492,10 +513,11 @@ namespace ATM
             this.withdrawalPanel.Controls.Add(this.withdrawal20Btn);
             this.withdrawalPanel.Controls.Add(this.label7);
             this.withdrawalPanel.Controls.Add(this.label4);
-            this.withdrawalPanel.Location = new System.Drawing.Point(809, 422);
+            this.withdrawalPanel.Location = new System.Drawing.Point(1314, 166);
             this.withdrawalPanel.Name = "withdrawalPanel";
             this.withdrawalPanel.Size = new System.Drawing.Size(235, 227);
             this.withdrawalPanel.TabIndex = 8;
+            this.withdrawalPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.withdrawalPanel_Paint);
             // 
             // withdrawalReturnBtn
             // 
@@ -593,6 +615,7 @@ namespace ATM
             this.depositPanel.Name = "depositPanel";
             this.depositPanel.Size = new System.Drawing.Size(280, 304);
             this.depositPanel.TabIndex = 9;
+            this.depositPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.depositPanel_Paint);
             // 
             // depositAccountReturnBtn
             // 
@@ -638,6 +661,7 @@ namespace ATM
             this.checkBalancePanel.Name = "checkBalancePanel";
             this.checkBalancePanel.Size = new System.Drawing.Size(255, 121);
             this.checkBalancePanel.TabIndex = 10;
+            this.checkBalancePanel.Paint += new System.Windows.Forms.PaintEventHandler(this.checkBalancePanel_Paint);
             // 
             // checkBalanceReturnBtn
             // 
@@ -695,6 +719,7 @@ namespace ATM
             this.checkBalanceAccountListPanel.Name = "checkBalanceAccountListPanel";
             this.checkBalanceAccountListPanel.Size = new System.Drawing.Size(280, 304);
             this.checkBalanceAccountListPanel.TabIndex = 11;
+            this.checkBalanceAccountListPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.checkBalanceAccountListPanel_Paint);
             // 
             // checkBalanceAccountReturnBtn
             // 
@@ -746,7 +771,7 @@ namespace ATM
             this.depositAmountPanel.Controls.Add(this.deposit1Btn);
             this.depositAmountPanel.Controls.Add(this.label14);
             this.depositAmountPanel.Controls.Add(this.depositAmountTextBox);
-            this.depositAmountPanel.Location = new System.Drawing.Point(307, 481);
+            this.depositAmountPanel.Location = new System.Drawing.Point(26, 837);
             this.depositAmountPanel.Name = "depositAmountPanel";
             this.depositAmountPanel.Size = new System.Drawing.Size(298, 222);
             this.depositAmountPanel.TabIndex = 12;
@@ -903,10 +928,11 @@ namespace ATM
             // 
             this.overWithdrawErrorPanel.Controls.Add(this.overWithdrawErrorReturnBtn);
             this.overWithdrawErrorPanel.Controls.Add(this.label15);
-            this.overWithdrawErrorPanel.Location = new System.Drawing.Point(1069, 481);
+            this.overWithdrawErrorPanel.Location = new System.Drawing.Point(938, 904);
             this.overWithdrawErrorPanel.Name = "overWithdrawErrorPanel";
             this.overWithdrawErrorPanel.Size = new System.Drawing.Size(269, 115);
             this.overWithdrawErrorPanel.TabIndex = 13;
+            this.overWithdrawErrorPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.overWithdrawErrorPanel_Paint);
             // 
             // overWithdrawErrorReturnBtn
             // 
@@ -933,10 +959,11 @@ namespace ATM
             this.transferFromAccountListPanel.Controls.Add(this.transferFromAccountListReturnBtn);
             this.transferFromAccountListPanel.Controls.Add(this.transferFromAccountListBox);
             this.transferFromAccountListPanel.Controls.Add(this.label16);
-            this.transferFromAccountListPanel.Location = new System.Drawing.Point(1472, 664);
+            this.transferFromAccountListPanel.Location = new System.Drawing.Point(875, 9);
             this.transferFromAccountListPanel.Name = "transferFromAccountListPanel";
             this.transferFromAccountListPanel.Size = new System.Drawing.Size(233, 310);
             this.transferFromAccountListPanel.TabIndex = 14;
+            this.transferFromAccountListPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.transferFromAccountListPanel_Paint);
             // 
             // transferFromAccountListReturnBtn
             // 
@@ -946,6 +973,7 @@ namespace ATM
             this.transferFromAccountListReturnBtn.TabIndex = 8;
             this.transferFromAccountListReturnBtn.Text = "Return";
             this.transferFromAccountListReturnBtn.UseVisualStyleBackColor = true;
+            this.transferFromAccountListReturnBtn.Click += new System.EventHandler(this.transferFromAccountListReturnBtn_Click);
             // 
             // transferFromAccountListBox
             // 
@@ -959,6 +987,7 @@ namespace ATM
             this.transferFromAccountListBox.Name = "transferFromAccountListBox";
             this.transferFromAccountListBox.Size = new System.Drawing.Size(192, 199);
             this.transferFromAccountListBox.TabIndex = 7;
+            this.transferFromAccountListBox.SelectedIndexChanged += new System.EventHandler(this.transferFromAccountListBox_SelectedIndexChanged);
             // 
             // label16
             // 
@@ -974,10 +1003,11 @@ namespace ATM
             this.transferToAccountListPanel.Controls.Add(this.transferToAccountListReturnBtn);
             this.transferToAccountListPanel.Controls.Add(this.transferToAccountListBox);
             this.transferToAccountListPanel.Controls.Add(this.label17);
-            this.transferToAccountListPanel.Location = new System.Drawing.Point(1192, 668);
+            this.transferToAccountListPanel.Location = new System.Drawing.Point(1299, 895);
             this.transferToAccountListPanel.Name = "transferToAccountListPanel";
             this.transferToAccountListPanel.Size = new System.Drawing.Size(264, 310);
             this.transferToAccountListPanel.TabIndex = 15;
+            this.transferToAccountListPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.transferToAccountListPanel_Paint);
             // 
             // transferToAccountListReturnBtn
             // 
@@ -987,6 +1017,7 @@ namespace ATM
             this.transferToAccountListReturnBtn.TabIndex = 8;
             this.transferToAccountListReturnBtn.Text = "Return";
             this.transferToAccountListReturnBtn.UseVisualStyleBackColor = true;
+            this.transferToAccountListReturnBtn.Click += new System.EventHandler(this.transferToAccountListReturnBtn_Click);
             // 
             // transferToAccountListBox
             // 
@@ -1000,6 +1031,7 @@ namespace ATM
             this.transferToAccountListBox.Name = "transferToAccountListBox";
             this.transferToAccountListBox.Size = new System.Drawing.Size(192, 199);
             this.transferToAccountListBox.TabIndex = 7;
+            this.transferToAccountListBox.SelectedIndexChanged += new System.EventHandler(this.transferToAccountListBox_SelectedIndexChanged);
             // 
             // label17
             // 
@@ -1014,10 +1046,11 @@ namespace ATM
             // 
             this.atmCashAmountErrorPanel.Controls.Add(this.atmCashAmountReturnBtn);
             this.atmCashAmountErrorPanel.Controls.Add(this.label18);
-            this.atmCashAmountErrorPanel.Location = new System.Drawing.Point(1750, 754);
+            this.atmCashAmountErrorPanel.Location = new System.Drawing.Point(622, 904);
             this.atmCashAmountErrorPanel.Name = "atmCashAmountErrorPanel";
             this.atmCashAmountErrorPanel.Size = new System.Drawing.Size(247, 125);
             this.atmCashAmountErrorPanel.TabIndex = 16;
+            this.atmCashAmountErrorPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.atmCashAmountErrorPanel_Paint);
             // 
             // atmCashAmountReturnBtn
             // 
@@ -1216,6 +1249,7 @@ namespace ATM
             this.loginPinEorrorPanel.Name = "loginPinEorrorPanel";
             this.loginPinEorrorPanel.Size = new System.Drawing.Size(256, 131);
             this.loginPinEorrorPanel.TabIndex = 18;
+            this.loginPinEorrorPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.loginPinEorrorPanel_Paint);
             // 
             // loginPinErrorMessageBtn
             // 
@@ -1236,11 +1270,41 @@ namespace ATM
             this.label13.TabIndex = 0;
             this.label13.Text = "Invalid PIN entry";
             // 
+            // transferErrorPanel
+            // 
+            this.transferErrorPanel.Controls.Add(this.transferErrorReturnButton);
+            this.transferErrorPanel.Controls.Add(this.label19);
+            this.transferErrorPanel.Location = new System.Drawing.Point(330, 890);
+            this.transferErrorPanel.Name = "transferErrorPanel";
+            this.transferErrorPanel.Size = new System.Drawing.Size(269, 115);
+            this.transferErrorPanel.TabIndex = 19;
+            this.transferErrorPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.transferErrorPanel_Paint);
+            // 
+            // transferErrorReturnButton
+            // 
+            this.transferErrorReturnButton.Location = new System.Drawing.Point(94, 80);
+            this.transferErrorReturnButton.Name = "transferErrorReturnButton";
+            this.transferErrorReturnButton.Size = new System.Drawing.Size(75, 23);
+            this.transferErrorReturnButton.TabIndex = 3;
+            this.transferErrorReturnButton.Text = "Return";
+            this.transferErrorReturnButton.UseVisualStyleBackColor = true;
+            this.transferErrorReturnButton.Click += new System.EventHandler(this.transferErrorReturnButton_Click);
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(13, 30);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(243, 26);
+            this.label19.TabIndex = 2;
+            this.label19.Text = "The balance of this account must be greater than \r\nthe withdraw amount.\r\n";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(2043, 1071);
+            this.Controls.Add(this.transferErrorPanel);
             this.Controls.Add(this.loginPinEorrorPanel);
             this.Controls.Add(this.loginPanel);
             this.Controls.Add(this.atmCashAmountErrorPanel);
@@ -1287,6 +1351,8 @@ namespace ATM
             this.loginPanel.PerformLayout();
             this.loginPinEorrorPanel.ResumeLayout(false);
             this.loginPinEorrorPanel.PerformLayout();
+            this.transferErrorPanel.ResumeLayout(false);
+            this.transferErrorPanel.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -1399,6 +1465,9 @@ namespace ATM
         private System.Windows.Forms.Panel loginPinEorrorPanel;
         private System.Windows.Forms.Button loginPinErrorMessageBtn;
         private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Panel transferErrorPanel;
+        private System.Windows.Forms.Button transferErrorReturnButton;
+        private System.Windows.Forms.Label label19;
     }
 }
 
